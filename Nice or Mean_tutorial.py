@@ -10,7 +10,7 @@ text = fontstyle.apply('NICE OR MEAN?', 'bold/Italic/red/GREEN_BG')
 print(text)
 
 
-def start (nice=0,mean=0,name=""):
+def start(nice=0,mean=0,name=""):
     # get user's name
     name = describe_game(name)
     nice,mean,name = nice_mean(nice,mean,name)
@@ -45,6 +45,10 @@ def nice_mean(nice,mean,name):
     while stop:
         show_score(nice,mean,name)
         pick = input("\nA stranger approaches you for a \nconversation. Will you be nice \nor mean? (N/M) \n>>>: ").lower()
+        if pick == "n":
+            print("\nThe stranger walks away smiling..")
+            nice = (nice + 1)
+            stop = False
         if pick == "m":
             print("\nThe stranger glares at you \nmenacingly and storms off...")
             mean = (mean + 1)
