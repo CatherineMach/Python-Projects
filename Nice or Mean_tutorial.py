@@ -1,5 +1,4 @@
 
-
 # import module
 import fontstyle
 
@@ -8,7 +7,6 @@ text = fontstyle.apply('NICE OR MEAN?', 'bold/Italic/red/GREEN_BG')
 
 # display text
 print(text)
-
 
 def start(nice=0,mean=0,name=""):
     # get user's name
@@ -26,14 +24,14 @@ def describe_game(name):
     # meaning, if we do not already have this user's name,
     # then they are a new player and we need to get their name
     if name != "":
-        print("\nThank you for playing again, ()!".format(name))
+        print("\nThank you for playing again, {}!".format(name))
     else:
         stop = True
         while stop:
             if name == "":
                 name = input("\nWhat is your name? \n>>> ").capitalize()
                 if name != "":
-                    print("\nWelcome, ()!".format(name))
+                    print("\nWelcome, {}!".format(name))
                     print("\nIn this game, you will be greeted \nby several different people. \nYou can choose to be nice or mean")
                     print("but at the end of the game your fate \nwill be sealed by your actions.")
                     stop = False
@@ -56,7 +54,7 @@ def nice_mean(nice,mean,name):
     score(nice,mean,name) # pass the 3 variables to the score()
 
 def show_score(nice,mean,name):
-    print("\n{}, your current total: \n({}, Nice) and ({}, Mean)".format(nice,mean,name))
+    print("\n{}, your current total: \n({}, Nice) and ({}, Mean)".format(name,nice,mean))
 
 def score(nice,mean,name):
     # score function is being passed the values stored within the 3 variables
