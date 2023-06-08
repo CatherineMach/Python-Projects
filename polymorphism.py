@@ -18,7 +18,10 @@ class Employee(User):
     base_pay = 11.00
     department = "General"
     pin_number = "3980"
-    code_number = "4321"
+
+#Child Class Customer
+class Customer(User):
+    code_number = "4321"           
 
 # This is the same method in the parent class "User".
 # The difference is that, instead of using entry_password, we're using entry_pin.
