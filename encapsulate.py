@@ -23,3 +23,19 @@ obj.getPrivate()
 obj.setPrivate(23)
 obj.getPrivate()
 
+class both:
+    def __init__(self):
+        self._bothVar = 0
+        self._bothVar = 12
+
+    def getboth(self):
+        print(self.__bothVar)
+
+    def setboth(self, private):
+        self._bothVar = both
+
+obj = both()
+obj.getboth()
+obj.setboth(12)
+obj.getboth()
+
