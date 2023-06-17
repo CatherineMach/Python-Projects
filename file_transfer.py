@@ -2,10 +2,16 @@
 import tkinter as tk
 from tkinter import *
 import tkinter.filedialog
+import os
+import shutil
 
 class ParentWindow(Frame):
     def __init__(self, master):
         #Creates function to select source directory.
+        #Creates button to transfer files
+        self.transfer_btn = Button(text="Transfer Files", width=20, command=self.transferFiles)
+        #Positons transfer files button
+        self.transfer_btn.grid(row=2, column=1, padx=(200, 0), pady=(0, 15))
         def sourceDif(self):
             selectSourceDir = tkinter.filedialog.askdirectory()
             #The .delete(0, END) will clear the content that is inserted in the Entry widget,
@@ -21,6 +27,19 @@ class ParentWindow(Frame):
             self.destination_dir.delete(0, END)
             #the .insert method will insert the user selection to the destination_dir Entry widget
             self.destination_dir.insert(0, selectDestDir)
+        #Creates function to transfer files from one directory to another
+        def transferFiles(self):
+            #Gets source directory
+            source = self.source_dir.get()
+            #Gets destination directory
+            destination = self.destination_dir.get()
+            #Gets a list of files in the source directory
+            source_files = os.listdir(source)
+            #Runs through each file in the source directory
+            for i in source_files:
+                #moves each file from the source to the destination
+                shutil.move(source + '/' + i, destination)
+                print(i + ' was successfully transferred.')
         Frame.__init__(self)
         #Sets title of GUI window
         self.master.title("File Transfer")
