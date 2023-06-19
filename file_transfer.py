@@ -4,6 +4,7 @@ from tkinter import *
 import tkinter.filedialog
 import os
 import shutil
+import datetime
 
 class ParentWindow(Frame):
     def __init__(self, master):
@@ -34,7 +35,13 @@ class ParentWindow(Frame):
         self.transfer_btn = Button(text="Transfer Files", width=20, command=self.transferFiles)
         #Positons transfer files button
         self.transfer_btn.grid(row=2, column=1, padx=(200, 0), pady=(0, 15))
-    def sourceDif(self):
+        #creates an Exit button
+        self.exit_btn = Button(text="Exit", width=20, command=self.exit_program)
+        #positions the exit button
+        self.exit_btn.grid(row=2, column=2, padx=(10, 40), pady=(0, 15))
+        x = datetime.datetime.now()
+        print(x)
+    def sourceDir(self):
         selectSourceDir = tkinter.filedialog.askdirectory()
         #The .delete(0, END) will clear the content that is inserted in the Entry widget,
         #this allows the path to be inserted into the Entry widget properly.
@@ -61,7 +68,12 @@ class ParentWindow(Frame):
         for i in source_files:
         #moves each file from the source to the destination
             shutil.move(source + '/' + i, destination)
-        print(i + ' was successfully transferred.')
+            print(i + ' was successfully transferred.')
+    #Creates function to exit program
+    def exit_program(self):
+        #root is the main GUI window, the Tkinter destroy method
+        #tells python to terminate root.mainloop and all widgets inside the GUi window
+        root.destroy()
 
 
 
