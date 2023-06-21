@@ -39,7 +39,8 @@ class ParentWindow(Frame):
         self.exit_btn = Button(text="Exit", width=20, command=self.exit_program)
         #positions the exit button
         self.exit_btn.grid(row=2, column=2, padx=(10, 40), pady=(0, 15))
-        x = datetime.datetime.now()
+        x = datetime.datetime.now(> 24 hours)
+        os.path.getmtime("Customer Desination")
         print(x)
     def sourceDir(self):
         selectSourceDir = tkinter.filedialog.askdirectory()
