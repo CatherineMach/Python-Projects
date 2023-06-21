@@ -39,9 +39,6 @@ class ParentWindow(Frame):
         self.exit_btn = Button(text="Exit", width=20, command=self.exit_program)
         #positions the exit button
         self.exit_btn.grid(row=2, column=2, padx=(10, 40), pady=(0, 15))
-        x = datetime.datetime.now("> 24 hours")
-        os.path.getmtime("Customer Desination")
-        print(x)
     def sourceDir(self):
         selectSourceDir = tkinter.filedialog.askdirectory()
         #The .delete(0, END) will clear the content that is inserted in the Entry widget,
@@ -70,6 +67,9 @@ class ParentWindow(Frame):
         #moves each file from the source to the destination
             shutil.move(source + '/' + i, destination)
             print(i + ' was successfully transferred.')
+        x = datetime.datetime.now("> 24 hours")
+        os.path.getmtime("Customer Desination")
+        print(x)
     #Creates function to exit program
     def exit_program(self):
         #root is the main GUI window, the Tkinter destroy method
