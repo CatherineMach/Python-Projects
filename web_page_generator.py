@@ -11,10 +11,11 @@ class ParentWindow(Frame):
         self.txtEntry = Entry(self.master,)
         self.txtEntry.grid(row=1, column=0, padx=(30,15), pady=(10,10), columnspan=3, sticky=W+E)
         htmlText = self.txtEntry.get()
-        self.btn = Button(self.master, text="customHTML", width=30, height=2, command=self.defaultHTML)
+        self.btn = Button(self.master, text="customHTML", width=30, height=2, command=self.customHTML)
         self.btn.grid(padx=(10,10) , pady=(10,10))
     def defaultHTML(self):
         htmlText = "Stay tuned for our amazing summer sale!"
+        htmlText = self.txtEntry.get() 
         htmlFile = open("index.html", "w")
         htmlContent = "<html>\n<body>\n<h1>" + htmlText + "</h1>\n</body>\n</html>"
         htmlFile.write(htmlContent)
