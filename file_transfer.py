@@ -4,7 +4,9 @@ from tkinter import *
 import tkinter.filedialog
 import os
 import shutil
-import datetime
+##import datetime
+from datetime import datetime, timedelta
+
 
 class ParentWindow(Frame):
     def __init__(self, master):
@@ -39,6 +41,7 @@ class ParentWindow(Frame):
         self.exit_btn = Button(text="Exit", width=20, command=self.exit_program)
         #positions the exit button
         self.exit_btn.grid(row=2, column=2, padx=(10, 40), pady=(0, 15))
+        
     def sourceDir(self):
         selectSourceDir = tkinter.filedialog.askdirectory()
         #The .delete(0, END) will clear the content that is inserted in the Entry widget,
@@ -46,6 +49,7 @@ class ParentWindow(Frame):
         self.source_dir.delete(0, END)
         #the .insert method will insert the user selection to the source_dir Entry
         self.source_dir.insert(0, selectSourceDir)
+        
     #Create function to select desitnation directory.
     def destDir(self):
         selectDestDir= tkinter.filedialog.askdirectory()
@@ -54,6 +58,7 @@ class ParentWindow(Frame):
         self.destination_dir.delete(0, END)
         #the .insert method will insert the user selection to the destination_dir Entry widget
         self.destination_dir.insert(0, selectDestDir)
+        
     #Creates function to transfer files from one directory to another
     def transferFiles(self):
         #Gets source directory
@@ -62,14 +67,26 @@ class ParentWindow(Frame):
         destination = self.destination_dir.get()
         #Gets a list of files in the source directory
         source_files = os.listdir(source)
+        oneDayAgo = (datetime.now() - timedelta(hours = 24))
+        print(oneDayAgo)
+                     
         #Runs through each file in the source directory
         for i in source_files:
+            filepath = os.path.join(source, i)
+            modDateSeconds = os.path.getmtime(filepath)
+            print(modDateSeconds)
+            
+            modDate = datetime.fromtimestamp((modDateSeconds))
+            print(modDate)
+            if (modDate > oneDayAgo):
+                shutil.move(filepath, destination)
+                     
+                
         #moves each file from the source to the destination
-            shutil.move(source + '/' + i, destination)
-            print(i + ' was successfully transferred.')
-        x = datetime.datetime.now("> 24 hours")
-        os.path.getmtime("Customer Desination")
-        print(x)
+##            shutil.move(source + '/' + i, destination)
+##            print(i + ' was successfully transferred.')
+        
+        
     #Creates function to exit program
     def exit_program(self):
         #root is the main GUI window, the Tkinter destroy method
