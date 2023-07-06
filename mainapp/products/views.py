@@ -35,7 +35,7 @@ def confirmed(request):
     if request.method == 'POST':
         # creates form instance and binds data to it
         form = ProductForm(request.POST or None)
-        if form.is.valid():
+        if form.is_valid():
             form.delete()
             return redirect('admin_console')
     else:
@@ -50,6 +50,6 @@ def createRecord(request):
         print(form.errors)
         form = ProductForm()
     context = (
-        'form': form,
+        {'form': form}
     )
     return render(request, 'products/createRecord.html', context)
