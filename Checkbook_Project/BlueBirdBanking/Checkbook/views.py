@@ -10,7 +10,7 @@ def home(request):
     if request.method == 'POST':
         content = {'form': form}
     # Adds content of form to page
-    return render(request, 'checkbook/CreateNewAccount.html')
+    return render(request, 'checkbook/index.html')
 
 
 # This function will render the Create New Account page when requested
